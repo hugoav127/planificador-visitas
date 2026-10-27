@@ -1,8 +1,11 @@
 @import "tailwindcss";
+@import "@fullcalendar/react/skeleton.css";
+@import "@fullcalendar/react/themes/monarch/theme.css";
+@import "@fullcalendar/react/themes/monarch/palettes/blue.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -12,15 +15,129 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.calendario {
+  --fc-monarch-primary: #1d4ed8;
+  --fc-monarch-border: #e2e8f0;
+  --fc-monarch-highlight: #eff6ff;
+  --fc-monarch-now: #2563eb;
+  --fc-monarch-selected: #1d4ed8;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(3px);
+}
+
+.calendario .franja-calendario {
+  height: 44px;
+}
+
+.calendario .texto-hora {
+  display: block;
+  min-width: 56px;
+  padding-inline: 6px;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.calendario div:has(> .hora-calendario) {
+  position: sticky;
+  left: 0;
+  z-index: 5;
+  background: #f8fafc;
+}
+
+.calendario .hora-fin {
+  position: sticky;
+  left: 0;
+  background: #f8fafc;
+}
+
+.calendario .primera-hora {
+  top: 0;
+  margin-block: 0;
+}
+
+.calendario .cabecera-calendario {
+  background: #f8fafc;
+}
+
+.calendario .cabecera-calendario[aria-current="date"] {
+  background: #e2e8f0;
+}
+
+.calendario .visita-calendario {
+  border: 1px solid var(--fc-event-color);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--fc-event-color) 12%, white);
+  color: #0f172a;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 12%);
+  cursor: pointer;
+}
+
+.calendario .visita-calendario:hover {
+  background: color-mix(in srgb, var(--fc-event-color) 20%, white);
+}
+
+.calendario .interior-visita {
+  display: block;
+  overflow: hidden;
+  padding: 4px 5px;
+  color: #0f172a;
+  container-type: inline-size;
+}
+
+.tarjeta-visita {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.tecnico-evento {
+  display: none;
+  margin-top: 2px;
+  color: #475569;
+}
+
+.calendario-mensual .interior-visita {
+  padding: 2px 4px;
+}
+
+.calendario-mensual .tarjeta-visita {
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+@container (min-width: 140px) {
+  .tarjeta-visita {
+    font-size: 12px;
+  }
+
+  .tarjeta-visita:not(.tarjeta-corta) .tecnico-evento {
+    display: block;
+  }
+}
+
+.calendario-mensual .tarjeta-visita .tecnico-evento {
+  display: none;
+}
+
+.calendario .visita-cancelada,
+.calendario .visita-cancelada:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  box-shadow: none;
+}
+
+.calendario .visita-cancelada .interior-visita,
+.calendario .visita-cancelada .tecnico-evento {
+  color: #64748b;
 }

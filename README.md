@@ -2,7 +2,7 @@
 
 Aplicación en español para organizar visitas de técnicos a obras con Next.js 16, React 19, TypeScript, Tailwind CSS 4, FullCalendar 7 y PostgreSQL en Neon.
 
-## Ejecutar en local en menos de 10 minutos
+## Ejecutar en local
 
 Requisitos para ejecutar la aplicación correctamente: **Node.js 24 LTS**, **npm**, conexión a Internet y acceso a una **base de datos PostgreSQL**, preferiblemente en Neon.
 
